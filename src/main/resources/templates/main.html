@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<h1>Main Page</h1>
+
+<!-- 사용자 정보를 표시 -->
+<p th:text="'User Id: ' + ${user.user_id}"></p>
+<p th:text="'User Dummy: ' + ${user.dummy}"></p>
+</body>
+</html>
