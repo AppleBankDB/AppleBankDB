@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/main")
     public String example(Model model) {
-        User user = userService.getUserById(1);
+        User user = userService.getUserById(2);
         model.addAttribute("user", user);
         return "main";
     }
