@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="design.database.apple.mapper.ProductMapper">
+
+    <select id="getFixedDepositProductList" resultType="HashMap">
+        select p.product_name, p.customer_requirement, fdp.* from product p join fixed_deposit_product fdp on fdp.product_id=p.product_id
+        where p.product_type='fixed_deposit' and p.product_status='active';
+    </select>
+
+    <select id="getDepositProductList" resultType="HashMap">
+        select p.product_name, p.customer_requirement, dp.* from product p join deposit_product dp on dp.product_id=p.product_id
+        where p.product_type='deposit' and p.product_status='active';
+    </select>
+
+    <select id="getCheckingAccountProductList" resultType="HashMap">
+        select p.product_name, p.customer_requirement, cap.* from product p join checking_account_product cap on cap.product_id=p.product_id
+        where p.product_type='checking_account' and p.product_status='active';
+    </select>
+
+    <select id="getLoanProductList" resultType="HashMap">
+        select p.product_name, p.customer_requirement, lp.* from product p join loan_product lp on lp.product_id=p.product_id
+        where p.product_type='loan' and p.product_status='active';
+    </select>
+
+    <select id="getCardProductList" resultType="HashMap">
+        select p.product_name, p.customer_requirement, cp.* from product p join card_product cp on cp.product_id=p.product_id
+        where p.product_type='card' and p.product_status='active';
+    </select>
+</mapper>
