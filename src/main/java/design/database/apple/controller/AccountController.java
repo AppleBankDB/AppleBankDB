@@ -1,52 +1,61 @@
-//package design.database.apple.controller;
-//
-//import design.database.apple.service.ProductService;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//
-//import java.util.HashMap;
-//import java.util.List;
-//
-//public class AccountController {
-//    private final AccountService accountService;
-//
-//    @GetMapping("/account-category")
-//    public String getProductCategory(Model model) {
-//        return "account/accountCategory";
-//    }
-//
-//    @GetMapping("/installment-account-list")
-//    public String getFixedDepositProductList(Model model) {
-//        List<HashMap<String, String>> fixedDepositProductList = accountService.getFixedDepositProductList();
-//        model.addAttribute("fixedDepositProductList", fixedDepositProductList);
-//        return "account/installmentAccountList";
-//    }
-//
-//    @GetMapping("/deposit-product-list")
-//    public String getDepositProductList(Model model) {
-//        List<HashMap<String, String>> depositProductList = productService.getDepositProductList();
-//        model.addAttribute("depositProductList", depositProductList);
-//        return "product/depositProductList";
-//    }
-//
-//    @GetMapping("/checking-account-product-list")
-//    public String getCheckingAccountProductList(Model model) {
-//        List<HashMap<String, String>> checkingAccountProductList = productService.getCheckingAccountProductList();
-//        model.addAttribute("checkingAccountProductList", checkingAccountProductList);
-//        return "product/checkingAccountProductList";
-//    }
-//
-//    @GetMapping("/loan-product-list")
-//    public String getLoanProductList(Model model) {
-//        List<HashMap<String, String>> loanProductList = productService.getLoanProductList();
-//        model.addAttribute("loanProductList", loanProductList);
-//        return "product/loanProductList";
-//    }
-//
-//    @GetMapping("/card-product-list")
-//    public String getCardProductList(Model model) {
-//        List<HashMap<String, String>> cardProductList = productService.getCardProductList();
-//        model.addAttribute("cardProductList", cardProductList);
-//        return "product/cardProductList";
-//    }
-//}
+package design.database.apple.controller;
+
+import design.database.apple.model.User;
+import design.database.apple.service.AccountService;
+import design.database.apple.service.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.HashMap;
+import java.util.List;
+
+@Slf4j
+@RequiredArgsConstructor
+@Controller
+
+public class AccountController {
+    private final AccountService accountService;
+
+    @GetMapping("/account-category")
+    public String getProductCategory(Model model) {
+        return "account/accountCategory";
+    }
+
+    @GetMapping("/installment-account-list")
+    public String getFixedDepositProductList(Model model) {
+        List<HashMap<String, String>> installmentAccount = accountService.getInstallmentAccount();
+        model.addAttribute("fixedDepositProductList", installmentAccount);
+        return "account/installmentAccountList";
+    }
+
+    @GetMapping("/saving-account-list")
+    public String getDepositProductList(Model model) {
+        List<HashMap<String, String>> savingAccount = accountService.getSavingAccount();
+        model.addAttribute("depositProductList", savingAccount);
+        return "account/savingAccountList";
+    }
+
+    @GetMapping("/checking-account-product-list")
+    public String getCheckingAccountProductList(Model model) {
+        List<HashMap<String, String>> checkingAccount = accountService.getCheckingAccount();
+        model.addAttribute("checkingAccountProductList", checkingAccount);
+        return "account/checkingAccountList";
+    }
+
+    @GetMapping("/loan-account-list")
+    public String getLoanProductList(Model model) {
+        List<HashMap<String, String>> loanAccount = accountService.getLoanAccount();
+        model.addAttribute("loanProductList", loanAccount);
+        return "account/loanAccountList";
+    }
+
+    @GetMapping("/card-account-list")
+    public String getCardProductList(Model model) {
+        List<HashMap<String, String>> cardList = accountService.getCardList();
+        model.addAttribute("cardList", cardList);
+        return "account/cardAccountList";
+    }
+}
