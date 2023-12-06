@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Add Automatic Transfer</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Add Automatic Transfer</h2>
+
+    <form method="post" action="/transaction/automaticTransferAdd">
+        <div class="form-group">
+            <label for="withdrawalAccountNumber">Withdrawal Account Number:</label>
+            <input type="text" class="form-control" id="withdrawalAccountNumber" name="withdrawalAccountNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="receivingAccountNumber">Receiving Account Number:</label>
+            <input type="text" class="form-control" id="receivingAccountNumber" name="receivingAccountNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="receivingBank">Receiving Bank:</label>
+            <input type="text" class="form-control" id="receivingBank" name="receivingBank" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="text" class="form-control" id="amount" name="amount" required>
+        </div>
+        <div class="form-group">
+            <label for="transferCycle">Transfer Cycle:</label>
+            <input type="text" class="form-control" id="transferCycle" name="transferCycle" required>
+        </div>
+        <div class="form-group">
+            <label for="executionDate">Execution Date:</label>
+            <input type="text" class="form-control" id="executionDate" name="executionDate" required>
+        </div>
+        <div class="form-group">
+            <label for="expirationDate">Expiration Date:</label>
+            <input type="text" class="form-control" id="expirationDate" name="expirationDate" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

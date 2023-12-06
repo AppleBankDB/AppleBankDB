@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Transaction Main</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">원하시는 서비스를 선택해 주세요</h1>
+
+    <div class="text-center">
+        <a th:href="@{/transaction/deposit}" class="btn btn-primary btn-lg mr-2">Deposit</a>
+        <a th:href="@{/transaction/withdrawal}" class="btn btn-success btn-lg mr-2">Withdrawal</a>
+        <a th:href="@{/transaction/transfer}" class="btn btn-info btn-lg mr-2">Transfer</a>
+        <a th:href="@{/transaction/automaticTransfer}" class="btn btn-warning btn-lg">Automatic Transfer</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Transfer</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Transfer</h2>
+
+    <form action="/transaction/transfer" method="post">
+        <div class="form-group">
+            <label for="sourceAccount">Source Account:</label>
+            <input type="text" class="form-control" id="sourceAccount" name="sourceAccount" required>
+        </div>
+
+        <div class="form-group">
+            <label for="targetAccount">Target Account:</label>
+            <input type="text" class="form-control" id="targetAccount" name="targetAccount" required>
+        </div>
+
+        <div class="form-group">
+            <label for="targetBank">Target Bank:</label>
+            <input type="text" class="form-control" id="targetBank" name="targetBank" required>
+        </div>
+
+        <div class="form-group">
+            <label for="recipientName">Recipient Name:</label>
+            <input type="text" class="form-control" id="recipientName" name="recipientName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" class="form-control" id="amount" name="amount" required>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Transfer</button>
+    </form>
+</div>
+
+</body>
+</html>
