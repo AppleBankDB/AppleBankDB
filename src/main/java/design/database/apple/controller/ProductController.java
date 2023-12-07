@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -65,4 +66,11 @@ public class ProductController {
         return "product/cardProductList";
     }
 
+    @GetMapping("/fixed-deposit-product/{id}")
+    public String applyFixedDepositProduct(@PathVariable Integer id, Model model) {
+        HashMap<String, String> fixedDepositProduct = productService.getFixedDepositProductById(id);
+        model.addAttribute("fixedDepositProduct", fixedDepositProduct);
+        model.addAttribute("title", "적금 상품 신청하기");
+        return "product/apply/fixedDepositProduct";
+    }
 }

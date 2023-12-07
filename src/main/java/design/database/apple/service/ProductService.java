@@ -43,4 +43,9 @@ public class ProductService {
         return cardProductList;
     }
 
+    public HashMap<String, String> getFixedDepositProductById(Integer id) {
+        HashMap<String, String> fixedDepositProduct = productMapper.getFixedDepositProductById(id);
+        return fixedDepositProduct;
+    }
+
 }

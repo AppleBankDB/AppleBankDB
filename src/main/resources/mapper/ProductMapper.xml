@@ -26,4 +26,9 @@
         select p.product_name, p.customer_requirement, cp.* from product p join card_product cp on cp.product_id=p.product_id
         where p.product_type='card' and p.product_status='active';
     </select>
+
+    <select id="getFixedDepositProductById" parameterType="Integer" resultType="HashMap">
+        select p.product_name, p.customer_requirement, fdp.* from product p join fixed_deposit_product fdp on fdp.product_id=p.product_id
+        where p.product_type='fixed_deposit' and p.product_status='active' and fdp.product_id=#{id};
+    </select>
 </mapper>
