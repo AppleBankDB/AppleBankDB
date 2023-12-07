@@ -1,8 +1,6 @@
 package design.database.apple.controller;
 
-import design.database.apple.model.User;
 import design.database.apple.service.ProductService;
-import design.database.apple.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
