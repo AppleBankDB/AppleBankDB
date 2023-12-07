@@ -34,15 +34,15 @@ public class AccountController {
     @GetMapping("/saving-account-list")
     public String getDepositProductList(Model model) {
         List<HashMap<String, String>> savingAccount = accountService.getSavingAccount();
-        model.addAttribute("depositProductList", savingAccount);
-        return "account/savingAccountList";
+        model.addAttribute("savingAccountList", savingAccount);
+        return "account/savingAccount";
     }
 
     @GetMapping("/checking-account-list")
     public String getCheckingAccountProductList(Model model) {
         List<HashMap<String, String>> checkingAccount = accountService.getCheckingAccount();
-        model.addAttribute("checkingAccountProductList", checkingAccount);
-        return "account/checkingAccountList";
+        model.addAttribute("checkingAccountList", checkingAccount);
+        return "account/checkingAccount";
     }
 
     @GetMapping("/loan-account-list")

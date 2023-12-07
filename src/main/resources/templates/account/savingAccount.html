@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Installment Accounts</title>
+    <title>User Saving Accounts</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -48,7 +48,7 @@
     </style>
 </head>
 <body>
-<div class="header">사용자 적금 계정 목록</div>
+<div class="header">User Saving Accounts</div>
 <div class="table-container">
     <table>
         <thead>
@@ -56,28 +56,20 @@
             <th>Username</th>
             <th>Account Number</th>
             <th>Balance</th>
-            <th>Account Type</th>
-            <th>Product Name</th>
+            <th>Saving Product Name</th>
             <th>Duration (Months)</th>
-            <th>Deposit Amount</th>
-            <th>Interest</th>
-            <th>Saving Method</th>
-            <th>Deposit Cycle</th>
+            <th>Interest Rate</th>
             <th>Expiration Date</th>
         </tr>
         </thead>
-        <tbody th:each="account : ${userInstallmentAccountList}">
+        <tbody th:each="account : ${savingAccountList}">
         <tr>
             <td th:text="${account.username}">Username</td>
             <td th:text="${account.account_number}">Account Number</td>
             <td th:text="${account.balance}">Balance</td>
-            <td th:text="${account.account_type_name}">Account Type</td>
-            <td th:text="${account.product_name}">Product Name</td>
-            <td th:text="${account.duration_of_month}">Duration (Months)</td>
-            <td th:text="${account.unit_deposit_amount}">Deposit Amount</td>
-            <td th:text="${account.interest}">Interest</td>
-            <td th:text="${account.saving_method}">Saving Method</td>
-            <td th:text="${account.deposit_cycle}">Deposit Cycle</td>
+            <td th:text="${account.saving_product_name}">Saving Product Name</td>
+            <td th:text="${account.duration_months}">Duration (Months)</td>
+            <td th:text="${account.interest_rate}">Interest Rate</td>
             <td th:text="${account.expiration_date}">Expiration Date</td>
         </tr>
         </tbody>

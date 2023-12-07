@@ -14,6 +14,30 @@
             atype.product_name = 'installment_account';
     </select>
 
+    <select id="getSavingAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name,sav.product_name AS saving_product_name,sav.duration_months,sav.interest_rate,sav.expiration_date
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN saving sav ON a.account_id = sav.account_id
+        WHERE
+            atype.product_name = 'saving_account';
+    </select>
+
+    <select id="getSavingAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name,sav.product_name AS saving_product_name,sav.duration_months,sav.interest_rate,sav.expiration_date
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN saving sav ON a.account_id = sav.account_id
+        WHERE
+            atype.product_name = 'saving_account';
+    </select>
+
 
 
 </mapper>
