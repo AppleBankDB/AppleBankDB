@@ -17,8 +17,13 @@ public class ManageController {
 
     private final ManageService manageService;
 
+    @GetMapping("/manager-category")
+    public String getManagerCategory(Model model) {
+        return "Manage/managerCategory";
+    }
+
     @GetMapping("/user-list-manager")
-    public String getManageCategory(Model model) {
+    public String getUserList(Model model) {
         List<HashMap<String, String>> userList = manageService.getUserList();
         model.addAttribute("userList", userList);
         return "Manage/userListManager";
