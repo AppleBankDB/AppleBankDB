@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <title>Manager</title>
     <link rel="stylesheet" type="text/css" href="/css/userListManager.css">
+    <script src="/js/userListManager.js"></script>
 </head>
 <body>
-<div>고객 정보 검색</div>
-<table>
+<div class="title">CAUCAU BANK</div>
+<div class="subtitle">고객 정보 검색</div>
+<div class="search-bar">
+    <input type="text" id="userSearch" placeholder="Search user" onkeyup="searchUsers()">
+</div>
+<table id="userTable">
     <thead>
     <tr>
         <th>User ID</th>

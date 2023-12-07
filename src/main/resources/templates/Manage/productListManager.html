@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <title>Manager</title>
   <link rel="stylesheet" type="text/css" href="/css/productListManager.css">
+  <script src="/js/productListManager.js"></script>
+
 </head>
 <body>
-<div>고객 신청 상품</div>
-<table>
+<div class="title">CAUCAU BANK</div>
+<div class="subtitle">고객 신청 상품 검색</div>
+<div class="search-bar">
+  <input type="text" id="productSearch" onkeyup="searchProducts()" placeholder="Search product">
+</div>
+<table id="productTable">
   <thead>
   <tr>
     <th>User ID</th>
