@@ -50,6 +50,7 @@
             atype.product_name = 'loan_account';
     </select>
 
+<!--    카드부분 미구현-->
 
 
 </mapper>

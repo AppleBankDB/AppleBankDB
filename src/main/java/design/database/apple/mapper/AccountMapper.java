@@ -9,5 +9,7 @@ public interface AccountMapper {
     List<HashMap<String, String>> getSavingAccount();
     List<HashMap<String, String>> getCheckingAccount();
     List<HashMap<String, String>> getLoanAccount();
+
+    //미구현
     List<HashMap<String, String>> getCardList();
 }

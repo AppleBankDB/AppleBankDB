@@ -39,6 +39,7 @@ public class AccountService {
         return loanAccount;
     }
 
+    //미구현///////////////////////////////////////////
     public List<HashMap<String, String>> getCardList() {
         List<HashMap<String, String>> cardList = accountMapper.getCardList();
         return cardList;
