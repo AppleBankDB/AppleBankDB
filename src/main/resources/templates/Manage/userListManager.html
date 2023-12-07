@@ -2,28 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>고객 관리</title>
+    <title>Manager</title>
     <link rel="stylesheet" type="text/css" href="/css/userListManager.css">
 </head>
 <body>
-<div>고객 신청 상품</div>
+<div>고객 정보 검색</div>
 <table>
     <thead>
     <tr>
         <th>User ID</th>
         <th>User Name</th>
-        <th>Product Type</th>
-        <th>Product Name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="item : ${userList}">
         <td th:text="${item.user_id}"></td>
         <td th:text="${item.username}"></td>
-        <td th:text="${item.account_type_id}"></td>
-        <td th:text="${item.product_name}"></td>
     </tr>
     </tbody>
 </table>
+<button onclick="window.history.back();">뒤로 가기</button>
 </body>
 </html>
