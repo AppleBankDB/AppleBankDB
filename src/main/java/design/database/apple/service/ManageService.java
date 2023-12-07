@@ -21,5 +21,9 @@ public class ManageService {
         return userList;
     }
 
+    public List<HashMap<String, String>> getProductList() {
+        List<HashMap<String, String>> productList = manageMapper.getProductList();
+        return productList;
+    }
 
 }

@@ -9,4 +9,11 @@
              JOIN account_type att ON a.account_type_id = att.product_type_id;
     </select>
 
+    <select id="getProductList" resultType="HashMap">
+        SELECT u.user_id, u.username, a.account_type_id
+        FROM user u
+             JOIN Account a ON u.user_id = a.user_id
+             JOIN account_type att ON a.account_type_id = att.product_type_id;
+    </select>
+
 </mapper>

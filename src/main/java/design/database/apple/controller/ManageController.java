@@ -28,4 +28,11 @@ public class ManageController {
         model.addAttribute("userList", userList);
         return "Manage/userListManager";
     }
+
+    @GetMapping("/product-list-manager")
+    public String getProductList(Model model) {
+        List<HashMap<String, String>> productList = manageService.getProductList();
+        model.addAttribute("productList", productList);
+        return "Manage/productListManager";
+    }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>고객 관리</title>
+  <link rel="stylesheet" type="text/css" href="/css/productListManager.css">
+</head>
+<body>
+<div>고객 신청 상품</div>
+<table>
+  <thead>
+  <tr>
+    <th>User ID</th>
+    <th>User Name</th>
+    <th>Product Type</th>
+    <th>Product Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${userList}">
+    <td th:text="${item.user_id}"></td>
+    <td th:text="${item.username}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
