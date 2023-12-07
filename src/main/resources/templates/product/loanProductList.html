@@ -1,16 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>상품</title>
-</head>
-<body>
-<div>대출 상품</div>
-<ul>
-    <li th:each="item : ${loanProductList}">
-        <span th:text="${item.product_name}"></span>
-        <span th:text="${item.customer_requirement}"></span>
-    </li>
-</ul>
-</body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<div layout:fragment="content">
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">대출 상품 목록</h1>
+            </div>
+        </div>
+    </header>
+    <!-- Body -->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-5 justify-content-center">
+                <div class="col mb-5" th:each="item : ${loanProductList}">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://img.hankyung.com/photo/202211/01.31789649.1.jpg"
+                             alt="..."/>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 style="font-size: 18px;" class="fw-bolder" th:text="${item.product_name}"></h5>
+                                <span style="font-size: 12px;" th:text="${item.customer_requirement}"></span>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                        href="/fixed-deposit-product-list">대출 상품 신청하기</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 </html>

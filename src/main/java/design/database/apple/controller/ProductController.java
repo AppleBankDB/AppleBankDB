@@ -21,6 +21,7 @@ public class ProductController {
 
     @GetMapping("/product-category")
     public String getProductCategory(Model model) {
+        model.addAttribute("title", "상품 찾기");
         return "product/productCategory";
     }
 
@@ -28,6 +29,7 @@ public class ProductController {
     public String getFixedDepositProductList(Model model) {
         List<HashMap<String, String>> fixedDepositProductList = productService.getFixedDepositProductList();
         model.addAttribute("fixedDepositProductList", fixedDepositProductList);
+        model.addAttribute("title", "적금 상품");
         return "product/fixedDepositProductList";
     }
 
@@ -35,6 +37,7 @@ public class ProductController {
     public String getDepositProductList(Model model) {
         List<HashMap<String, String>> depositProductList = productService.getDepositProductList();
         model.addAttribute("depositProductList", depositProductList);
+        model.addAttribute("title", "예금 상품");
         return "product/depositProductList";
     }
 
@@ -42,6 +45,7 @@ public class ProductController {
     public String getCheckingAccountProductList(Model model) {
         List<HashMap<String, String>> checkingAccountProductList = productService.getCheckingAccountProductList();
         model.addAttribute("checkingAccountProductList", checkingAccountProductList);
+        model.addAttribute("title", "입출금 상품");
         return "product/checkingAccountProductList";
     }
 
@@ -49,6 +53,7 @@ public class ProductController {
     public String getLoanProductList(Model model) {
         List<HashMap<String, String>> loanProductList = productService.getLoanProductList();
         model.addAttribute("loanProductList", loanProductList);
+        model.addAttribute("title", "대출 상품");
         return "product/loanProductList";
     }
 
@@ -56,6 +61,7 @@ public class ProductController {
     public String getCardProductList(Model model) {
         List<HashMap<String, String>> cardProductList = productService.getCardProductList();
         model.addAttribute("cardProductList", cardProductList);
+        model.addAttribute("title", "카드 상품");
         return "product/cardProductList";
     }
 
