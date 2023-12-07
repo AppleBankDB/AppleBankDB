@@ -27,8 +27,8 @@ public class AccountController {
     @GetMapping("/installment-account-list")
     public String getFixedDepositProductList(Model model) {
         List<HashMap<String, String>> installmentAccount = accountService.getInstallmentAccount();
-        model.addAttribute("fixedDepositProductList", installmentAccount);
-        return "account/installmentAccountList";
+        model.addAttribute("userInstallmentAccountList", installmentAccount);
+        return "account/installmentAccount";
     }
 
     @GetMapping("/saving-account-list")
@@ -38,7 +38,7 @@ public class AccountController {
         return "account/savingAccountList";
     }
 
-    @GetMapping("/checking-account-product-list")
+    @GetMapping("/checking-account-list")
     public String getCheckingAccountProductList(Model model) {
         List<HashMap<String, String>> checkingAccount = accountService.getCheckingAccount();
         model.addAttribute("checkingAccountProductList", checkingAccount);
@@ -52,10 +52,10 @@ public class AccountController {
         return "account/loanAccountList";
     }
 
-    @GetMapping("/card-account-list")
+    @GetMapping("/card-list")
     public String getCardProductList(Model model) {
         List<HashMap<String, String>> cardList = accountService.getCardList();
         model.addAttribute("cardList", cardList);
-        return "account/cardAccountList";
+        return "account/cardList";
     }
 }

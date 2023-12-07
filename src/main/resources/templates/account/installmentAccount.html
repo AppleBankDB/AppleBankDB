@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Installment Accounts</title>
+</head>
+<body>
+<div>사용자 적금 계정 목록</div>
+<ul>
+    <li th:each="account : ${userInstallmentAccountList}">
+        <span th:text="${account.username}">Username</span>
+        <span th:text="${account.account_number}">Account Number</span>
+        <span th:text="${account.balance}">Balance</span>
+        <span th:text="${account.account_type_name}">Account Type</span>
+        <span th:text="${account.product_name}">Product Name</span>
+        <span th:text="${account.duration_of_month}">Duration (Months)</span>
+        <span th:text="${account.unit_deposit_amount}">Deposit Amount</span>
+        <span th:text="${account.interest}">Interest</span>
+        <span th:text="${account.saving_method}">Saving Method</span>
+        <span th:text="${account.deposit_cycle}">Deposit Cycle</span>
+        <span th:text="${account.expiration_date}">Expiration Date</span>
+    </li>
+</ul>
+</body>
+</html>
