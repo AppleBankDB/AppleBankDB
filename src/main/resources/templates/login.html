@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<h1>Login Page</h1>
+
+<!-- 로그인 오류 메시지 표시 -->
+<p th:if="${error}" style="color: red;">다시 로그인하세요</p>
+
+<!-- 로그인 성공 메시지 표시 -->
+<p th:if="${success}" style="color: green;">로그인 성공!</p>
+
+<!-- 로그인 폼 -->
+<form action="/login" method="post">
+    <label for="id">Login Id:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+</form>
+
+<!-- 회원가입 링크 -->
+<p>계정이 없으신가요? <a th:href="@{/register}">회원가입</a></p>
+
+<!-- JavaScript to redirect on successful login -->
+<script th:inline="javascript">
+    /* Check if the success parameter exists in the URL */
+    var successParam = "[[${success}]]";
+    if (successParam && successParam == 'true') {
+        /* Redirect to the main page */
+        window.location.href = '/main';
+    }
+</script>
+
+</body>
+</html>

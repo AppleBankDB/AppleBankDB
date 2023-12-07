@@ -5,10 +5,11 @@
     <title>Main Page</title>
 </head>
 <body>
-<h1>Main Page</h1>
+<h1>CACAUBANK</h1>
 
-<!-- 사용자 정보를 표시 -->
-<p th:text="'User Id: ' + ${user.user_id}"></p>
-<p th:text="'User Dummy: ' + ${user.dummy}"></p>
+<!-- 로그인 페이지로 이동하는 버튼 -->
+<a th:href="@{/login}">
+    <button>로그인</button>
+</a>
 </body>
 </html>
