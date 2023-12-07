@@ -54,8 +54,8 @@ public class AccountController {
 
     @GetMapping("/card-list")
     public String getCardAccountList(Model model) {
-        List<HashMap<String, String>> cardList = accountService.getCardList();
-        model.addAttribute("cardList", cardList);
+//        List<HashMap<String, String>> cardList = accountService.getCardList();
+//        model.addAttribute("cardList", cardList);
         return "account/cardList";
     }
 }

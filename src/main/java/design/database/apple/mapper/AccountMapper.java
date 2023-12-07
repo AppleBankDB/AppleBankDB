@@ -10,6 +10,6 @@ public interface AccountMapper {
     List<HashMap<String, String>> getCheckingAccount();
     List<HashMap<String, String>> getLoanAccount();
 
-    //미구현
+    //미구짐
     List<HashMap<String, String>> getCardList();
 }
