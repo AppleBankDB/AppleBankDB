@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Saving Accounts</title>
+    <title>User Checking Accounts</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,35 +69,16 @@
     </style>
 </head>
 <body>
-<div class="header">User Saving Accounts</div>
+<div class="header">User Checking Accounts</div>
 <div class="table-container">
     <div class="button-container">
         <button class="back-button" onclick="window.location.href='/account-category'">뒤로가기</button>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Username</th>
-            <th>Account Number</th>
-            <th>Balance</th>
-            <th>Saving Product Name</th>
-            <th>Duration (Months)</th>
-            <th>Interest Rate</th>
-            <th>Expiration Date</th>
-        </tr>
-        </thead>
-        <tbody th:each="account : ${savingAccountList}">
-        <tr>
-            <td th:text="${account.username}">Username</td>
-            <td th:text="${account.account_number}">Account Number</td>
-            <td th:text="${account.balance}">Balance</td>
-            <td th:text="${account.saving_product_name}">Saving Product Name</td>
-            <td th:text="${account.duration_months}">Duration (Months)</td>
-            <td th:text="${account.interest_rate}">Interest Rate</td>
-            <td th:text="${account.expiration_date}">Expiration Date</td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <h1>
+            미구현
+        </h1>
+    </div>
 </div>
 </body>
 </html>

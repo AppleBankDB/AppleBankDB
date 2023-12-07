@@ -20,40 +20,40 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping("/account-category")
-    public String getProductCategory(Model model) {
+    public String getAccountCategory(Model model) {
         return "account/accountCategory";
     }
 
     @GetMapping("/installment-account-list")
-    public String getFixedDepositProductList(Model model) {
+    public String getInstallmentAccountList(Model model) {
         List<HashMap<String, String>> installmentAccount = accountService.getInstallmentAccount();
         model.addAttribute("userInstallmentAccountList", installmentAccount);
         return "account/installmentAccount";
     }
 
     @GetMapping("/saving-account-list")
-    public String getDepositProductList(Model model) {
+    public String getSavingAccountList(Model model) {
         List<HashMap<String, String>> savingAccount = accountService.getSavingAccount();
         model.addAttribute("savingAccountList", savingAccount);
         return "account/savingAccount";
     }
 
     @GetMapping("/checking-account-list")
-    public String getCheckingAccountProductList(Model model) {
+    public String getCheckingAccountList(Model model) {
         List<HashMap<String, String>> checkingAccount = accountService.getCheckingAccount();
         model.addAttribute("checkingAccountList", checkingAccount);
         return "account/checkingAccount";
     }
 
     @GetMapping("/loan-account-list")
-    public String getLoanProductList(Model model) {
+    public String getLoanAccountList(Model model) {
         List<HashMap<String, String>> loanAccount = accountService.getLoanAccount();
-        model.addAttribute("loanProductList", loanAccount);
-        return "account/loanAccountList";
+        model.addAttribute("loanAccountList", loanAccount);
+        return "account/loanAccount";
     }
 
     @GetMapping("/card-list")
-    public String getCardProductList(Model model) {
+    public String getCardAccountList(Model model) {
         List<HashMap<String, String>> cardList = accountService.getCardList();
         model.addAttribute("cardList", cardList);
         return "account/cardList";

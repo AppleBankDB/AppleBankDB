@@ -16,19 +16,21 @@
             color: white;
             font-size: 24px;
             padding: 10px 0;
+            margin-bottom: 20px;
         }
 
         .table-container {
             width: 100%;
-            max-width: 800px; /* Adjust the maximum width as needed */
+            max-width: 800px;
             margin: auto;
-            overflow-y: auto; /* Enables vertical scrollbar if content overflows */
+            overflow-y: auto;
             border-collapse: collapse;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px; /* Spacing between button and table */
         }
 
         th, td {
@@ -45,11 +47,33 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: left; /* Align button to the left */
+        }
     </style>
 </head>
 <body>
 <div class="header">사용자 적금 계정 목록</div>
 <div class="table-container">
+    <div class="button-container">
+        <button class="back-button" onclick="window.location.href='/account-category'">뒤로가기</button>
+    </div>
     <table>
         <thead>
         <tr>
