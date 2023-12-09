@@ -1,107 +1,63 @@
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
 <head>
-    <meta charset="UTF-8">
-    <title>User Loan Accounts</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .header {
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-
-        .table-container {
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
-            overflow-y: auto;
-            border-collapse: collapse;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .back-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .back-button:hover {
-            background-color: #0056b3;
-        }
-
-        .button-container {
-            text-align: left;
-        }
-    </style>
-</head>
-<body>
-<div class="header">User Loan Accounts</div>
-<div class="table-container">
-    <div class="button-container">
-        <button class="back-button" onclick="window.location.href='/account-category'">뒤로가기</button>
+<style>
+    .loan-table{
+        border: 1px solid black;
+    }
+    .loan-table th{
+        border: 1px solid black;
+        padding: 5px;
+        font-weight:bold;
+    }
+    .loan-table tr{
+        border: 1px solid black;
+    }
+    .loan-table td{
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style></head>
+<div layout:fragment="content">
+    <!-- Header-->
+    <header class="bg-main-theme py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">대출 계좌 목록</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5 mt-5" style="width:1300px; display: flex; flex-direction: column;">
+        <table class="loan-table">
+            <thead>
+            <tr>
+                <th>명의</th>
+                <th>계좌 번호</th>
+                <th>예치금</th>
+                <th>상품 이름</th>
+                <th>만기일</th>
+                <th>이자율</th>
+                <th>납부일</th>
+                <th>연체 이자율</th>
+                <th>대출 목적</th>
+            </tr>
+            </thead>
+            <tbody th:each="account : ${loanAccountList}">
+            <tr>
+                <td th:text="${account.username}">Username</td>
+                <td th:text="${account.account_number}">Account Number</td>
+                <td th:text="${#numbers.formatDecimal(account.balance, 0, 'COMMA', 0, 'POINT')}+'원'">Balance</td>
+                <td th:text="${account.product_name}">Product Name</td>
+                <td th:text="${account.expiration_date}">Expiration Date</td>
+                <td th:text="${account.interest_rate}+'%'">Interest Rate</td>
+                <td th:text="${account.payment_date}">Payment Date</td>
+                <td th:text="${account.overdue_interest_rate}+'%'">Overdue Interest Rate</td>
+                <td th:text="${account.loan_purpose}">Loan Purpose</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Username</th>
-            <th>Account Number</th>
-            <th>Balance</th>
-            <th>Product Name</th>
-            <th>Expiration Date</th>
-            <th>Interest Rate</th>
-            <th>Payment Date</th>
-            <th>Overdue Interest Rate</th>
-            <th>Loan Purpose</th>
-        </tr>
-        </thead>
-        <tbody th:each="account : ${loanAccountList}">
-        <tr>
-            <td th:text="${account.username}">Username</td>
-            <td th:text="${account.account_number}">Account Number</td>
-            <td th:text="${account.balance}">Balance</td>
-            <td th:text="${account.product_name}">Product Name</td>
-            <td th:text="${account.expiration_date}">Expiration Date</td>
-            <td th:text="${account.interest_rate}">Interest Rate</td>
-            <td th:text="${account.payment_date}">Payment Date</td>
-            <td th:text="${account.overdue_interest_rate}">Overdue Interest Rate</td>
-            <td th:text="${account.loan_purpose}">Loan Purpose</td>
-        </tr>
-        </tbody>
-    </table>
 </div>
-</body>
 </html>

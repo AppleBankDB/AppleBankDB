@@ -13,4 +13,7 @@ public interface ProductMapper {
     List<HashMap<String, String>> getLoanProductList();
     List<HashMap<String, String>> getCardProductList();
     HashMap<String, String> getFixedDepositProductById(Integer id);
+    HashMap<String, String> getLoanProductById(Integer id);
+    List<HashMap<String, String>> getTermsOfServiceById(Integer id);
+    List<HashMap<String, String>> getProductFeatureById(Integer id);
 }

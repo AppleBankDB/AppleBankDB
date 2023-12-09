@@ -71,4 +71,23 @@ public class ProductController {
         model.addAttribute("title", "적금 상품 신청하기");
         return "product/apply/fixedDepositProduct";
     }
+
+    @GetMapping("/loan-product/{id}")
+    public String applyLoanProduct(@PathVariable("id") Integer id, Model model) {
+        System.out.println(id);
+        HashMap<String, String> loanProduct = productService.getLoanProductById(id);
+        List<HashMap<String, String>> termsOfService = productService.getTermsOfServiceById(id);
+        List<HashMap<String, String>> productFeature = productService.getProductFeatureById(id);
+        model.addAttribute("loanProduct", loanProduct);
+        model.addAttribute("termsOfService", termsOfService);
+        model.addAttribute("productFeature", productFeature);
+        model.addAttribute("title", "대출 상품 신청하기");
+        return "product/apply/loanProduct";
+    }
+
+    @GetMapping("/complete")
+    public String complete(Model model) {
+        model.addAttribute("title", "상품 신청 완료");
+        return "product/apply/complete";
+    }
 }

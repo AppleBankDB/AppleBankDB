@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,9 +46,9 @@ public class AccountController {
         return "account/checkingAccount";
     }
 
-    @GetMapping("/loan-account-list")
-    public String getLoanAccountList(Model model) {
-        List<HashMap<String, String>> loanAccount = accountService.getLoanAccount();
+    @GetMapping("/loan-account-list/{id}")
+    public String getLoanAccountList(@PathVariable("id") Integer id, Model model) {
+        List<HashMap<String, String>> loanAccount = accountService.getLoanAccount(id);
         model.addAttribute("loanAccountList", loanAccount);
         return "account/loanAccount";
     }

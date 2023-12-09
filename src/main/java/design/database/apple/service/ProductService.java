@@ -48,4 +48,19 @@ public class ProductService {
         return fixedDepositProduct;
     }
 
+    public HashMap<String, String> getLoanProductById(Integer id) {
+        HashMap<String, String> loanProduct = productMapper.getLoanProductById(id);
+        return loanProduct;
+    }
+
+    public List<HashMap<String, String>> getTermsOfServiceById(Integer id) {
+        List<HashMap<String, String>> termsOfService = productMapper.getTermsOfServiceById(id);
+        return termsOfService;
+    }
+
+    public List<HashMap<String, String>> getProductFeatureById(Integer id) {
+        List<HashMap<String, String>> productFeature = productMapper.getProductFeatureById(id);
+        return productFeature;
+    }
+
 }

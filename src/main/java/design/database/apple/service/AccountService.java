@@ -34,8 +34,8 @@ public class AccountService {
         return checkingAccount;
     }
 
-    public List<HashMap<String, String>> getLoanAccount() {
-        List<HashMap<String, String>> loanAccount = accountMapper.getLoanAccount();
+    public List<HashMap<String, String>> getLoanAccount(Integer id) {
+        List<HashMap<String, String>> loanAccount = accountMapper.getLoanAccount(id);
         return loanAccount;
     }
 

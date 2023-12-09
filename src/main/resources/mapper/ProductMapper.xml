@@ -31,4 +31,17 @@
         select p.product_name, p.customer_requirement, fdp.* from product p join fixed_deposit_product fdp on fdp.product_id=p.product_id
         where p.product_type='fixed_deposit' and p.product_status='active' and fdp.product_id=#{id};
     </select>
+
+    <select id="getLoanProductById" parameterType="Integer" resultType="HashMap">
+        select p.product_name, p.customer_requirement, lp.* from product p join loan_product lp on lp.product_id=p.product_id
+        where p.product_type='loan' and p.product_status='active' and lp.product_id=#{id};
+    </select>
+
+    <select id="getTermsOfServiceById" parameterType="Integer" resultType="HashMap">
+        select * from terms_of_service tos join terms_of_service_link tosl on tosl.terms_of_service_id=tos.terms_of_service_id where tosl.product_id=#{id};
+    </select>
+
+    <select id="getProductFeatureById" parameterType="Integer" resultType="HashMap">
+        select * from product_feature pf join product_feature_link pfl on pfl.product_feature_id=pf.product_feature_id where pfl.product_id=#{id};
+    </select>
 </mapper>

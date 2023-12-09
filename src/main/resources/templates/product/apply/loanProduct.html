@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<div layout:fragment="content">
+    <!-- Header-->
+    <header class="bg-main-theme py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">대출 상품 신청하기</h1>
+            </div>
+        </div>
+    </header>
+    <!-- Body -->
+    <section class="py-8">
+        <div class="container px-4 px-lg-5 mt-5" style="width:800px; display: flex; flex-direction: column;">
+            <!-- header -->
+            <div class="loan-head">상품 타입</div>
+            <div class="loan-body">주택담보대출</div>
+            <div class="loan-head">상품 이름</div>
+            <div class="loan-body" th:text="${loanProduct.product_name}"></div>
+            <div class="loan-head">금리</div>
+            <div  class="loan-body"th:text="${loanProduct.interest}+'%'"></div>
+            <div class="loan-head">최대 한도</div>
+            <div  class="loan-body"th:text="${#numbers.formatDecimal(loanProduct.max_amount, 0, 'COMMA', 0, 'POINT')}+'원'"></div>
+            <!-- feature -->
+            <div class="loan-head" >상품 특징
+                <div th:each="item : ${productFeature}">
+                    <div class="loan-body" style="margin-top: 5px;" th:text="'-  '+${item.product_feature_name}"></div>
+                </div>
+            </div>
+            <!-- requirement -->
+            <div class="loan-head">대출 조건</div>
+            <div  class="loan-body"th:text="${loanProduct.customer_requirement}"></div>
+            <!-- detail -->
+            <div class="loan-head">대출 대상</div>
+            <div class="loan-body">아파트 구입자금 또는 가계자금</div>
+            <div class="loan-head">대출 금리</div>
+            <div class="loan-body">기본 금리에 우대 금리까지 적용 가능</div>
+            <div class="loan-head">대출 한도</div>
+            <div class="loan-body">아파트 담보력 범위 내</div>
+            <div class="loan-head">대출 기간</div>
+            <div class="loan-body" th:text="${loanProduct.duration_of_month}+'개월'"></div>
+            <div class="loan-head">상환 방법</div>
+            <div class="loan-body">만기일시상환</div>
+            <div class="loan-head">중도상환수수료</div>
+            <div class="loan-body" th:utext="${loanProduct.prepayment_fee}"></div>
+            <div class="loan-head">유의사항</div>
+            <div class="loan-body" th:utext="${loanProduct.notice}"></div>
+            <!-- terms-of_service -->
+            <div class="loan-head" style="margin-bottom: 30px;">이용 약관
+                <div th:each="item : ${termsOfService}">
+                    <!-- 기본 체크박스 -->
+                    <input type="checkbox">
+                    <label  class="loan-body"th:text="${item.document_name}"></label>
+                </div>
+            </div>
+            <!-- 신청하기 -->
+            <div style="display: flex; justify-content: center">
+                <button class="button" style="margin-bottom: 200px; height: 50px; width: 150px; background-color: #0B71C5; color:white; border: none;" onclick="window.location.href='/complete'">상품 신청하기</button>
+            </div>
+        </div>
+    </section>
+</div>
+</html>

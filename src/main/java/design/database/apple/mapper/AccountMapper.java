@@ -8,7 +8,7 @@ public interface AccountMapper {
     List<HashMap<String, String>> getInstallmentAccount();
     List<HashMap<String, String>> getSavingAccount();
     List<HashMap<String, String>> getCheckingAccount();
-    List<HashMap<String, String>> getLoanAccount();
+    List<HashMap<String, String>> getLoanAccount(Integer id);
 
     //미구짐
     List<HashMap<String, String>> getCardList();
