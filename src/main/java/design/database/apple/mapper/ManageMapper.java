@@ -7,4 +7,9 @@ public interface ManageMapper {
 
     List<HashMap<String, String>> getUserList();
     List<HashMap<String, String>> getProductList();
+    List<HashMap<String, String>> getAllProductList();
+
+    void deleteProductById(Integer id);
+
+    void deleteLoanProductById(Integer id);
 }

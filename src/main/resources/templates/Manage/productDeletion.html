@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+<style>
+    table{
+        border: 1px solid black;
+    }
+    table th{
+        border: 1px solid black;
+        padding: 5px;
+        font-weight:bold;
+        text-align: center;
+    }
+    table tr{
+        border: 1px solid black;
+    }
+    table td{
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+</head>
+<div layout:fragment="content">
+    <!-- Header-->
+    <header class="bg-main-theme py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">상품 목록</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5 mt-5" style="width:1200px;">
+        <table style="width:100%;">
+            <thead>
+            <tr>
+                <th>상품 ID</th>
+                <th>상품 이름</th>
+                <th>상품 타입</th>
+                <th>요구조건</th>
+                <th>상품상태</th>
+                <th>생성일</th>
+                <th>업데이트일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${productList}">
+                <td th:text="${item.product_id}"></td>
+                <td th:text="${item.product_name}"></td>
+                    <td th:if="${item.product_type == 'fixed_deposit'}">적금</td>
+                    <td th:if="${item.product_type == 'deposit'}">예금</td>
+                    <td th:if="${item.product_type == 'checking_account'}">입출금</td>
+                    <td th:if="${item.product_type == 'loan'}">대출</td>
+                    <td th:if="${item.product_type == 'card'}">카드</td>
+                <td th:text="${item.customer_requirement}"></td>
+                <td th:text="${item.product_status}"></td>
+                <td th:text="${#strings.substring(item.created_at, 0, 19)}"></td>
+                <td th:text="${#strings.substring(item.updated_at, 0, 19)}"></td>
+                <td>
+                    <button class="button" style="font-size:10px; height: 40px; width: 40px; background-color: #0B71C5; color:white; border: none;" th:onclick="|window.location.href='/product/delete/${item.product_id}'|"
+                    >삭제</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin-bottom: 200px;">
+        </div>
+    </div>
+</div>
+</html>

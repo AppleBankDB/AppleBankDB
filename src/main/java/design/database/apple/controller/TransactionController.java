@@ -1,15 +1,14 @@
 package design.database.apple.controller;
 
+import design.database.apple.service.AccountService;
 import design.database.apple.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 
 @Slf4j
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionController {
 
     private final TransactionService transactionService;
+    private final AccountService accountService;
 
     @GetMapping("/transaction")
     public String getTransaction(Model model) {
@@ -48,15 +48,44 @@ public class TransactionController {
         return "transaction/transactionMain";
     }
 
-    @GetMapping("/transaction/transfer")
-    public String getTransfer(Model model) {
+    @GetMapping("/transaction/transfer/{id}")
+    public String getTransfer(@PathVariable("id") String id,Model model) {
+        HashMap<String, String> account = accountService.getCurrentAccount(id);
+        model.addAttribute("account", account);
+
         return "/transaction/transfer";
+    }
+
+
+    @GetMapping("/get-transferred/{balance}/{firstAccount}/{secondAccount}/{amount}")
+    @ResponseBody
+    public String getTransfer(@PathVariable("balance") Integer balance,
+                                @PathVariable("firstAccount") String firstAccount,
+                              @PathVariable("secondAccount") String secondAccount,
+                              @PathVariable("amount") Integer amount,
+                              Model model) {
+        HashMap<String, Object> data = new HashMap<>();
+        Integer calculatedAmount = balance - amount;
+        data.put("balance",calculatedAmount);
+        data.put("accountNumber",firstAccount);
+
+        accountService.updateBalanceByAccountNumber(data);
+
+        HashMap<String, String> account = accountService.getCurrentAccount(secondAccount);
+        HashMap<String, Object> data2 = new HashMap<>();
+        String.valueOf(account.get("balance"));
+        String stringBalance = String.valueOf(account.get("balance"));
+        Integer calculatedAmount2 = Integer.parseInt(stringBalance) - amount;
+        data2.put("balance",calculatedAmount2);
+        data2.put("accountNumber",secondAccount);
+
+        accountService.updateBalanceByAccountNumber(data2);
+
+        return "GOOD";
     }
 
     @PostMapping("/transaction/transfer")
     public String transferProcess(Model model) {
-//        if 송금 성공시 송금 성공 페이지
-//        송금 실패시 송금 실패 페이지
         return "transaction/transactionMain";
     }
 
@@ -84,7 +113,11 @@ public class TransactionController {
         return "transaction/transactionMain";
     }
 
-
+    @GetMapping("/get-name/{id}")
+    @ResponseBody
+    public String handleAsyncRequest(@PathVariable("id") String id) {
+        return accountService.getNameByAccountNumber(id);
+    }
 
 
 }

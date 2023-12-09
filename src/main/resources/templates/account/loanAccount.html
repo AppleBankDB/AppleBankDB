@@ -11,6 +11,7 @@
         border: 1px solid black;
         padding: 5px;
         font-weight:bold;
+        text-align: center;
     }
     .loan-table tr{
         border: 1px solid black;
@@ -35,11 +36,12 @@
             <tr>
                 <th>명의</th>
                 <th>계좌 번호</th>
+                <th>대출 금액</th>
                 <th>예치금</th>
                 <th>상품 이름</th>
                 <th>만기일</th>
                 <th>이자율</th>
-                <th>납부일</th>
+                <th>시작일</th>
                 <th>연체 이자율</th>
                 <th>대출 목적</th>
             </tr>
@@ -48,6 +50,7 @@
             <tr>
                 <td th:text="${account.username}">Username</td>
                 <td th:text="${account.account_number}">Account Number</td>
+                <td th:text="${#numbers.formatDecimal(account.committed_amount, 0, 'COMMA', 0, 'POINT')}+'원'">Account Number</td>
                 <td th:text="${#numbers.formatDecimal(account.balance, 0, 'COMMA', 0, 'POINT')}+'원'">Balance</td>
                 <td th:text="${account.product_name}">Product Name</td>
                 <td th:text="${account.expiration_date}">Expiration Date</td>

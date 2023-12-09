@@ -40,7 +40,7 @@
 
     <select id="getLoanAccount" parameterType="Integer" resultType="HashMap">
         SELECT
-            u.user_id,u.username,a.account_number,a.balance,l.product_name,l.expiration_date,l.interest_rate,l.payment_date,l.overdue_interest_rate, l.loan_purpose
+            u.user_id,u.username,a.account_number,a.balance,l.committed_amount,l.product_name,l.expiration_date,l.interest_rate,l.payment_date,l.overdue_interest_rate, l.loan_purpose
         FROM
             account a
                 INNER JOIN `user` u ON a.user_id = u.user_id
@@ -51,7 +51,27 @@
             u.user_id=#{id};
     </select>
 
-<!--    카드부분 미구현-->
+    <insert id="insertAccount" useGeneratedKeys="true" keyProperty="account_id" parameterType="Account">
+        INSERT INTO apple.account
+            (user_id, account_type_id, product_id, account_number, balance)
+        VALUES(3, 4, 7, generate_account_number(), 0);
+    </insert>
 
+    <insert id="insertLoan" parameterType="Integer">
+        INSERT INTO apple.loan
+        (account_id, product_name, committed_amount, expiration_date, interest_rate, payment_date, overdue_status, overdue_interest_rate, loan_purpose)
+        VALUES(#{id}, 'CAU 원큐 대출', 100000000, '2024-12-10', 4, '2023-12-10', 1, 1, '전세대출');
+    </insert>
 
+    <select id="getCurrentAccount" parameterType="String" resultType="HashMap">
+        select a.account_number, a.balance, u.* from account a join user u on u.user_id=a.user_id where account_number=#{id};
+    </select>
+
+    <select id="getNameByAccountNumber" parameterType="String" resultType="String">
+        select username from user where user_id=(select user_id from account a where account_number=#{accountNumber});
+    </select>
+
+    <update id="updateBalanceByAccountNumber" parameterType="HashMap">
+        update account set balance=#{balance} where account_number=#{accountNumber};
+    </update>
 </mapper>

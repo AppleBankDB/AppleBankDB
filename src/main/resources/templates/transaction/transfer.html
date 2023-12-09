@@ -1,46 +1,88 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Transfer</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<div layout:fragment="content">
+    <script>
+        $(document).ready(function () {
+            $("#asyncButton").click(function () {
+                const accountNumber = $("#account").val();
+                $.ajax({
+                    type: "GET",
+                    url: "/get-name/" + accountNumber,
+                    success: function (data) {
+                        $("#result").text(data);
+                    },
+                    error: function (error) {
+                        console.log("Error:", error);
+                    }
+                });
+            });
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Transfer</h2>
-
-    <form action="/transaction/transfer" method="post">
-        <div class="form-group">
-            <label for="sourceAccount">Source Account:</label>
-            <input type="text" class="form-control" id="sourceAccount" name="sourceAccount" required>
+            $("#sendButton").click(function () {
+                const firstAccountNumber = $("#accountNumber").text();
+                const secondAccountNumber = $("#account").val();
+                const amount = $("#amount").val();
+                const balance = $("#balance").text();
+                $.ajax({
+                    type: "GET",
+                    url: "/get-transferred/" + balance + "/" + firstAccountNumber + "/" + secondAccountNumber + "/" + amount,
+                    success: function (data) {
+                        window.location.reload();
+                    },
+                    error: function (error) {
+                        console.log("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Header-->
+    <header class="bg-main-theme py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">송금</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container mt-5" style="width:800px;">
+        <div class="loan-head">
+         현재 계좌 번호
+        </div>
+        <div class="loan-body" id="accountNumber" th:text="${account.account_number}"></div>
+        <div class="loan-head">
+            소유 금액
+        </div>
+        <div class="loan-body" id="balance" th:text="${account.balance}">
+        </div>
+        <div class="loan-head">
+            보낼 계좌
+            <div>
+                <input type="text" id="account" name="account">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="targetAccount">Target Account:</label>
-            <input type="text" class="form-control" id="targetAccount" name="targetAccount" required>
+        <button class="button"
+                style="margin-top:10px; font-size:16px; height: 40px; width: 150px; background-color: #0B71C5; color:white; border: none;"
+                id="asyncButton"
+        >계좌 소유주 확인
+        </button>
+
+        <div class="loan-head">
+            계좌 소유주
+            <div class="loan-body" id="result" style="height:50px;"></div>
         </div>
 
-        <div class="form-group">
-            <label for="targetBank">Target Bank:</label>
-            <input type="text" class="form-control" id="targetBank" name="targetBank" required>
+        <div class="loan-head">
+            보낼 금액
+            <div>
+            <input type="number" id="amount" name="amount">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="recipientName">Recipient Name:</label>
-            <input type="text" class="form-control" id="recipientName" name="recipientName" required>
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input type="number" class="form-control" id="amount" name="amount" required>
-        </div>
-
-        <button type="submit" class="btn btn-warning">Transfer</button>
-    </form>
+        <button class="button" id="sendButton"
+                style="margin-top:10px;  font-size:16px; height: 40px; width: 150px; background-color: #0B71C5; color:white; border: none;"
+        >송금하기
+        </button>
+    </div>
 </div>
-
-</body>
 </html>

@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Manager</title>
-    <link rel="stylesheet" type="text/css" href="/css/userListManager.css">
-    <script src="/js/userListManager.js"></script>
-</head>
-<body>
-<div class="title">CAUCAU BANK</div>
-<div class="subtitle">고객 정보 검색</div>
-<div class="search-bar">
-    <input type="text" id="userSearch" placeholder="Search user" onkeyup="searchUsers()">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<div layout:fragment="content">
+    <!-- Header-->
+    <header class="bg-main-theme py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">적금 상품 목록</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5 mt-5" style="width:800px;">
+        <div class="title">CAUCAU BANK</div>
+        <div class="subtitle">고객 정보 검색</div>
+        <div class="search-bar">
+            <input type="text" id="userSearch" placeholder="Search user" onkeyup="searchUsers()">
+        </div>
+        <table id="userTable">
+            <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${userList}">
+                <td th:text="${item.user_id}"></td>
+                <td th:text="${item.username}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button onclick="window.history.back();">뒤로 가기</button>
+    </div>
 </div>
-<table id="userTable">
-    <thead>
-    <tr>
-        <th>User ID</th>
-        <th>User Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${userList}">
-        <td th:text="${item.user_id}"></td>
-        <td th:text="${item.username}"></td>
-    </tr>
-    </tbody>
-</table>
-<button onclick="window.history.back();">뒤로 가기</button>
-</body>
 </html>

@@ -13,4 +13,15 @@
              JOIN account_type att ON a.account_type_id = att.product_type_id;
     </select>
 
+    <select id="getAllProductList" resultType="HashMap">
+        SELECT * from product;
+    </select>
+
+    <delete id="deleteProductById">
+        delete from product where product_id=#{id};
+    </delete>
+
+    <delete id="deleteLoanProductById">
+        delete from loan_product where product_id=#{id};
+    </delete>
 </mapper>

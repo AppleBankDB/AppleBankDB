@@ -26,4 +26,16 @@ public class ManageService {
         return productList;
     }
 
+    public List<HashMap<String, String>> getAllProductList() {
+        List<HashMap<String, String>> productList = manageMapper.getAllProductList();
+        return productList;
+    }
+
+    public void deleteProductById(Integer id){
+        manageMapper.deleteProductById(id);
+    }
+
+    public void deleteLoanProductById(Integer id){
+        manageMapper.deleteLoanProductById(id);
+    }
 }

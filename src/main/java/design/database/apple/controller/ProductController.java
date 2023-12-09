@@ -1,5 +1,7 @@
 package design.database.apple.controller;
 
+import design.database.apple.model.Account;
+import design.database.apple.service.AccountService;
 import design.database.apple.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final AccountService accountService;
 
     @GetMapping("/product-category")
     public String getProductCategory(Model model) {
@@ -88,6 +91,8 @@ public class ProductController {
     @GetMapping("/complete")
     public String complete(Model model) {
         model.addAttribute("title", "상품 신청 완료");
+        Account account = accountService.insertAccount();
+        accountService.insertLoan(account.getAccount_id());
         return "product/apply/complete";
     }
 }
