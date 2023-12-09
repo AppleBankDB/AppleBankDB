@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+    <script>
+        function callAccountAPI() {
+            const id = document.getElementById("id").value;
+            const pw = document.getElementById("pw").value;
+            fetch(`/accountCheck?id=${id}&pw=${pw}`)
+                .then(response => response.text())
+                .then(data => document.getElementById("checkResult").innerText = data);
+        }
+    </script>
+
 </head>
+
 <body>
 <h1>Main Page</h1>
 
 <!-- 사용자 정보를 표시 -->
-<p th:text="'User Id: ' + ${user.user_id}"></p>
-<p th:text="'User Dummy: ' + ${user.dummy}"></p>
+<p th:text="'User Id: ' + (${user} != null ? ${user.user_id} : 'No User')"></p>
+<!--<p th:text="'User Dummy: ' + ${user.dummy}"></p>-->
+<h2>testing API</h2>
+<input type="text" id="id" placeholder="Enter id">
+<input type="password" id="pw" placeholder="Enter password">
+<button onclick="callAccountAPI()">check</button>
+<p id="checkResult"></p>
+
 </body>
 </html>

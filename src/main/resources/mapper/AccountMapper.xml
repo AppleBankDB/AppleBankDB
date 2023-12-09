@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="design.database.apple.mapper.AccountMapper">
+
+    <select id="getInstallmentAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name AS account_type_name,ins.product_name,ins.duration_of_month,ins.unit_deposit_amount,ins.interest,ins.saving_method,ins.deposit_cycle,ins.expiration_date
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN installment_saving ins ON a.account_id = ins.account_id
+        WHERE
+            atype.product_name = 'installment_account';
+    </select>
+
+    <select id="getSavingAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name,sav.product_name AS saving_product_name,sav.duration_months,sav.interest_rate,sav.expiration_date
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN saving sav ON a.account_id = sav.account_id
+        WHERE
+            atype.product_name = 'saving_account';
+    </select>
+
+    <select id="getCheckingAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name,c.checking_name
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN checking c ON a.account_id = c.account_id
+        WHERE
+            atype.product_name = 'checking_account';
+    </select>
+
+    <select id="getLoanAccount" resultType="HashMap">
+        SELECT
+            u.username,a.account_number,a.balance,atype.product_name,l.product_name,l.expiration_date,l.interest_rate,l.payment_date,l.overdue_interest_rate, l.loan_purpose
+        FROM
+            Account a
+                INNER JOIN user u ON a.user_id = u.user_id
+                INNER JOIN account_type atype ON a.account_type_id = atype.product_type_id
+                INNER JOIN loan l ON a.account_id = l.account_id
+        WHERE
+            atype.product_name = 'loan_account';
+    </select>
+
+<!--    카드부분 미구현-->
+
+
+</mapper>

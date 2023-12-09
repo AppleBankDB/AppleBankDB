@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Installment Accounts</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            overflow-y: auto;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Spacing between button and table */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: left; /* Align button to the left */
+        }
+    </style>
+</head>
+<body>
+<div class="header">사용자 적금 계정 목록</div>
+<div class="table-container">
+    <div class="button-container">
+        <button class="back-button" onclick="window.location.href='/account-category'">뒤로가기</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Account Number</th>
+            <th>Balance</th>
+            <th>Account Type</th>
+            <th>Product Name</th>
+            <th>Duration (Months)</th>
+            <th>Deposit Amount</th>
+            <th>Interest</th>
+            <th>Saving Method</th>
+            <th>Deposit Cycle</th>
+            <th>Expiration Date</th>
+        </tr>
+        </thead>
+        <tbody th:each="account : ${userInstallmentAccountList}">
+        <tr>
+            <td th:text="${account.username}">Username</td>
+            <td th:text="${account.account_number}">Account Number</td>
+            <td th:text="${account.balance}">Balance</td>
+            <td th:text="${account.account_type_name}">Account Type</td>
+            <td th:text="${account.product_name}">Product Name</td>
+            <td th:text="${account.duration_of_month}">Duration (Months)</td>
+            <td th:text="${account.unit_deposit_amount}">Deposit Amount</td>
+            <td th:text="${account.interest}">Interest</td>
+            <td th:text="${account.saving_method}">Saving Method</td>
+            <td th:text="${account.deposit_cycle}">Deposit Cycle</td>
+            <td th:text="${account.expiration_date}">Expiration Date</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
