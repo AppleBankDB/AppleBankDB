@@ -75,7 +75,7 @@ public class TransactionController {
         HashMap<String, Object> data2 = new HashMap<>();
         String.valueOf(account.get("balance"));
         String stringBalance = String.valueOf(account.get("balance"));
-        Integer calculatedAmount2 = Integer.parseInt(stringBalance) - amount;
+        Integer calculatedAmount2 = Integer.parseInt(stringBalance) + amount;
         data2.put("balance",calculatedAmount2);
         data2.put("accountNumber",secondAccount);
 

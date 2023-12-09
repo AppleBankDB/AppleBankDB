@@ -44,7 +44,7 @@
             </div>
         </div>
     </header>
-    <div class="container mt-5" style="width:800px;">
+    <div class="container mt-5" style="width:400px;">
         <div class="loan-head">
          현재 계좌 번호
         </div>
@@ -52,7 +52,7 @@
         <div class="loan-head">
             소유 금액
         </div>
-        <div class="loan-body" id="balance" th:text="${account.balance}">
+        <div class="loan-body" id="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 'COMMA', 0, 'POINT')}+'원'">
         </div>
         <div class="loan-head">
             보낼 계좌
@@ -75,7 +75,7 @@
         <div class="loan-head">
             보낼 금액
             <div>
-            <input type="number" id="amount" name="amount">
+            <input type="number" id="amount" name="amount"> 원
             </div>
         </div>
 

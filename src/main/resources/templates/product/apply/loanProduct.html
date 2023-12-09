@@ -51,7 +51,7 @@
                 <div th:each="item : ${termsOfService}">
                     <!-- 기본 체크박스 -->
                     <input type="checkbox">
-                    <label  class="loan-body"th:text="${item.document_name}"></label>
+                    <label  class="loan-body"th:text="'(필수) '+${item.document_name}"></label>
                 </div>
             </div>
             <!-- 신청하기 -->
