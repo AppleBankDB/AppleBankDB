@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager</title>
+    <link rel="stylesheet" type="text/css" href="/css/userListManager.css">
+    <script src="/js/userListManager.js"></script>
+</head>
+<body>
+<div class="title">CAUCAU BANK</div>
+<div class="subtitle">고객 정보 검색</div>
+<div class="search-bar">
+    <input type="text" id="userSearch" placeholder="Search user" onkeyup="searchUsers()">
+</div>
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>User Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${userList}">
+        <td th:text="${item.user_id}"></td>
+        <td th:text="${item.username}"></td>
+    </tr>
+    </tbody>
+</table>
+<button onclick="window.history.back();">뒤로 가기</button>
+</body>
+</html>

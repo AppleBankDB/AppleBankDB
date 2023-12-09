@@ -1,0 +1,74 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.title, .subtitle {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+}
+
+.search-bar {
+    margin-bottom: 20px; /* 검색창과 표 사이 간격 조정 */
+}
+
+.search-bar input {
+    border: 1px solid #ddd; /* 경계선 추가 */
+    padding: 10px;
+    width: 100%;
+    max-width: 500px; /* 검색창 너비 조정 */
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 20px; /* 표와 뒤로 가기 버튼 사이 간격 조정 */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+button {
+    border: none;
+    padding: 10px 15px; /* 버튼 패딩 조정 */
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #007BFF; /* 버튼 기본 색상 추가 */
+    margin-top: 10px; /* 버튼의 상단 간격 추가 */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
