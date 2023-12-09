@@ -6,4 +6,22 @@
         SELECT * FROM user WHERE user_id = #{id}
     </select>
 
+    <insert id="saveUser" parameterType="User">
+        INSERT INTO user (
+            username, password, birthday, gender, phone_number,
+            id, email, address_id, role_id, credit_score,
+            created_at, updated_at, dummy
+        )
+        VALUES (
+                   #{username}, #{password}, #{birthday}, #{gender}, #{phone_number},
+                   #{id}, #{email}, #{address_id}, #{role_id}, #{credit_score},
+                   #{created_at}, #{updated_at}, #{dummy}
+               )
+    </insert>
+
+    <select id="checkUserExistenceById" parameterType="Integer" resultType="Boolean">
+        SELECT COUNT(*) FROM user WHERE user_id = #{id}
+    </select>
+
 </mapper>
+

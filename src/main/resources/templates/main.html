@@ -16,7 +16,8 @@
 </head>
 
 <body>
-<h1>Main Page</h1>
+<h1>CACAUBANK</h1>
+
 
 <!-- 사용자 정보를 표시 -->
 <p th:text="'User Id: ' + (${user} != null ? ${user.user_id} : 'No User')"></p>
@@ -26,6 +27,12 @@
 <input type="password" id="pw" placeholder="Enter password">
 <button onclick="callAccountAPI()">check</button>
 <p id="checkResult"></p>
+
+
+<!-- 로그인 페이지로 이동하는 버튼 -->
+<a th:href="@{/login}">
+    <button>로그인</button>
+</a>
 
 </body>
 </html>
