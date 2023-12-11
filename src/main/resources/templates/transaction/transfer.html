@@ -22,7 +22,7 @@
                 const firstAccountNumber = $("#accountNumber").text();
                 const secondAccountNumber = $("#account").val();
                 const amount = $("#amount").val();
-                const balance = $("#balance").text();
+                const balance = $("#balance2").text();
                 $.ajax({
                     type: "GET",
                     url: "/get-transferred/" + balance + "/" + firstAccountNumber + "/" + secondAccountNumber + "/" + amount,
@@ -45,6 +45,8 @@
         </div>
     </header>
     <div class="container mt-5" style="width:400px;">
+        <div id="balance2" style="display: none;" th:text="${account.balance}">
+        </div>
         <div class="loan-head">
          현재 계좌 번호
         </div>
